@@ -1,2 +1,3 @@
 # python-hashpeer-launcher
-![alt text](https://imgur.com/a/3j5x30k)
+
+![alt text](https://i.imgur.com/JJXXbt8.png)
