@@ -1,0 +1,165 @@
+===========================================================================
+Device Number: 0 
+Organization: BT Italia S.p.A.
+Brand:
+Device OS: CirCarLife Scada v4.2.2
+Data Layer: HTTP/1.1
+Transport Layer: TCP
+Network Layer: 62.123.76.96:[8080, 22, 2222, 80, 123]
+Location: ITA 
+City: None
+Postal Code: None 
+Coordinates: ( 12.109700000000004, 43.14789999999999 )
+Datasheet:
+Shodan Url: https://www.shodan.io/host/62.123.76.96
+===========================================================================
+===========================================================================
+Device Number: 1 
+Organization: Telecom Italia Mobile
+Brand:
+Device OS: CirCarLife Scada v4.2.4
+Data Layer: HTTP/1.1
+Transport Layer: TCP
+Network Layer: 2.195.168.32:[80, 22, 123, 21, 8080, 3000, 23, 2121, 137, 554]
+Location: ITA 
+City: Ravenna
+Postal Code: 48100 
+Coordinates: ( 12.201099999999997, 44.41749999999999 )
+Datasheet:
+Shodan Url: https://www.shodan.io/host/2.195.168.32
+===========================================================================
+===========================================================================
+Device Number: 2 
+Organization: Vodafone Italy ask to use the space unassigment bu
+Brand:
+Device OS: CirCarLife Scada v4.2.4
+Data Layer: HTTP/1.1
+Transport Layer: TCP
+Network Layer: 83.224.136.170:[123, 80, 22, 50000, 53, 161, 6000, 111, 81, 443, 1911, 21, 8000, 137, 554, 8080, 8001, 37, 13, 88, 23]
+Location: ITA 
+City: Sesto Calende
+Postal Code: 21018 
+Coordinates: ( 8.633999999999986, 45.7261 )
+Datasheet:
+Shodan Url: https://www.shodan.io/host/83.224.136.170
+===========================================================================
+===========================================================================
+Device Number: 3 
+Organization: Telecom Italia Mobile
+Brand:
+Device OS: CirCarLife Scada v4.2.4
+Data Layer: HTTP/1.1
+Transport Layer: TCP
+Network Layer: 2.195.181.119:[80]
+Location: ITA 
+City: Ravenna
+Postal Code: 48100 
+Coordinates: ( 12.201099999999997, 44.41749999999999 )
+Datasheet:
+Shodan Url: https://www.shodan.io/host/2.195.181.119
+===========================================================================
+===========================================================================
+Device Number: 4 
+Organization: Telecom Italia Mobile
+Brand:
+Device OS: CirCarLife Scada v4.2.4
+Data Layer: HTTP/1.1
+Transport Layer: TCP
+Network Layer: 2.195.169.32:[80, 23, 5432, 53, 81, 123, 12345, 137]
+Location: ITA 
+City: Ravenna
+Postal Code: 48100 
+Coordinates: ( 12.201099999999997, 44.41749999999999 )
+Datasheet:
+Shodan Url: https://www.shodan.io/host/2.195.169.32
+===========================================================================
+===========================================================================
+Device Number: 5 
+Organization: Telecom Italia Mobile
+Brand:
+Device OS: CirCarLife Scada v4.2.4
+Data Layer: HTTP/1.1
+Transport Layer: TCP
+Network Layer: 2.195.166.230:[81, 80, 22, 21, 9443, 5900, 123, 161, 1911, 23, 5353, 8080, 53, 8081]
+Location: ITA 
+City: Ravenna
+Postal Code: 48100 
+Coordinates: ( 12.201099999999997, 44.41749999999999 )
+Datasheet:
+Shodan Url: https://www.shodan.io/host/2.195.166.230
+===========================================================================
+===========================================================================
+Device Number: 6 
+Organization: Telecom Italia Business
+Brand:
+Device OS: Apache/2.2.8 (Win32) DAV/2 mod_ssl/2.2.8 OpenSSL/0.9.8g mod_autoindex_color PHP/5.2.5
+Data Layer: HTTP/1.1
+Transport Layer: TCP
+Network Layer: 31.199.192.189:[2000, 8081, 3306]
+Location: ITA 
+City: Siracusa
+Postal Code: 96100 
+Coordinates: ( 15.276299999999992, 37.08410000000001 )
+Datasheet:
+Shodan Url: https://www.shodan.io/host/31.199.192.189
+===========================================================================
+===========================================================================
+Device Number: 7 
+Organization: Telecom Italia Mobile
+Brand:
+Device OS: CirCarLife Scada v4.3.0
+Data Layer: HTTP/1.1
+Transport Layer: TCP
+Network Layer: 2.195.161.3:[80, 8080, 23, 123, 2455, 5900, 83, 21, 5432, 3306]
+Location: ITA 
+City: Ravenna
+Postal Code: 48100 
+Coordinates: ( 12.201099999999997, 44.41749999999999 )
+Datasheet:
+Shodan Url: https://www.shodan.io/host/2.195.161.3
+===========================================================================
+===========================================================================
+Device Number: 8 
+Organization: Telecom Italia Mobile
+Brand:
+Device OS: CirCarLife Scada v4.2.4
+Data Layer: HTTP/1.1
+Transport Layer: TCP
+Network Layer: 2.195.169.51:[8080, 80, 21, 22, 161, 53, 23, 443, 554, 2222]
+Location: ITA 
+City: Ravenna
+Postal Code: 48100 
+Coordinates: ( 12.201099999999997, 44.41749999999999 )
+Datasheet:
+Shodan Url: https://www.shodan.io/host/2.195.169.51
+===========================================================================
+===========================================================================
+Device Number: 9 
+Organization: Z.G. Elettronica
+Brand:
+Device OS: None
+Data Layer: None
+Transport Layer: TCP
+Network Layer: 149.13.154.6:[8089, 8081, 8080, 8086, 8090, 161, 8083, 4444]
+Location: ITA 
+City: Sovizzo
+Postal Code: 36050 
+Coordinates: ( 11.446100000000001, 45.526700000000005 )
+Datasheet:
+Shodan Url: https://www.shodan.io/host/149.13.154.6
+===========================================================================
+===========================================================================
+Device Number: 10 
+Organization: Telecom Italia Business
+Brand:
+Device OS: Apache/2.2.3 (Red Hat)
+Data Layer: HTTP/1.0
+Transport Layer: TCP
+Network Layer: 95.226.188.61:[80, 9090, 8090, 84, 37777, 443]
+Location: ITA 
+City: Fasano
+Postal Code: 72015 
+Coordinates: ( 17.36009999999999, 40.83619999999999 )
+Datasheet:
+Shodan Url: https://www.shodan.io/host/95.226.188.61
+===========================================================================

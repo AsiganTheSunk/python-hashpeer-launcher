@@ -1,0 +1,12 @@
+beautifulsoup4
+fake-useragent
+aiohttp
+asyncio
+aiomultiprocess
+stem
+shodan
+pandas
+geopy
+pycountry
+countryinfo
+geoip2
