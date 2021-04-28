@@ -1,0 +1,10 @@
+
+__pycache__/
+
+*.pyc
+
+junk_examples/
+
+.idea/
+
+venv/
