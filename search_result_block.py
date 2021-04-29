@@ -11,6 +11,8 @@ from components.treeview_widget.recipe_treeview import Multicolumn_Listbox
 from components.metro_ui.recipe_entry_metro_ui import Metro_LabelFrame, QuoteFrame
 from components.metro_ui.recipe_entry_metro_ui import Metro_Button
 from pack_testing import SimplePosterBox, SimpleDataBox
+
+from component_filters.tk_common_widgets import TkCommonWidgets
 from display_box import DisplayBox
 
 LORE_IPSUM0 = 'Lorem ipsum dolor sit amet consectetur adipiscing elit cursus arcu, lobortis elementum fusce tellus' \
@@ -30,27 +32,29 @@ spath = "Kong Skull Island_Film_Poster.png"
 class SearchResultBlock(object):
     def __init__(self, root):
         self.root = root
-        self.main_frame = Frame(root)
-        # self.main_frame.pack(fill=BOTH, padx=1, pady=1)
-        self.main_frame.pack(fill=BOTH)
+        self.root_container_frame = Frame(root)
+        self.root_container_frame.pack(fill=BOTH)
 
-        # todo: ?
-        # search_frame = Frame(main_frame, height=120, width=500, bg=DEFAULT_BACKGROUND_COLOR,
-        #                      relief=SUNKEN, cursor="plus")
+        # note: ProgressBarFrameContainer
+        self.progressbar_frame_container = Frame(self.root_container_frame, height=20, width=500,
+                                                 bg=DEFAULT_BACKGROUND_COLOR, relief=SUNKEN, cursor="plus")
+        self.progressbar_frame_container.pack(fill=X)
 
-        self.add_progress_bar()
-        self.add_horizontal_separator()
-        self.add_collapsable_menu()
-        self.add_functionality_button('Search Results')
-        self.add_functionality_button('Audio Align')
-        self.add_functionality_button('File Mapper')
-        self.add_horizontal_separator()
+        # note: AddonMenuContainer:
+        TkCommonWidgets.horizontal_separator(self.root_container_frame)
+        self.addon_menu_container = Frame(self.root_container_frame, height=40, width=500, bg=DEFAULT_BACKGROUND_COLOR)
+        self.addon_menu_container.pack(fill=X)
+        self.init_addon_metro_button(self.addon_menu_container, 'Search Results')
+        self.init_addon_metro_button(self.addon_menu_container, 'Audio Align')
+        self.init_addon_metro_button(self.addon_menu_container, 'File Mapper')
+        TkCommonWidgets.horizontal_separator(self.root_container_frame)
 
+        # note: ClosableNotebook:
         notebook = ClosableNotebook()
         notebook.pack(side=TOP, fill=BOTH, expand=True, padx=6, pady=6)
 
         for color in (DEFAULT_BACKGROUND_COLOR, DEFAULT_BACKGROUND_COLOR, DEFAULT_BACKGROUND_COLOR):
-            self.add_new_tab(notebook, color)
+            self.init_new_notebook_tab(notebook, color)
 
     @staticmethod
     def on_select_entry(magnet_data):
@@ -58,78 +62,86 @@ class SearchResultBlock(object):
         print(f'clicked: {name}, {seed}, {leech}, {size}')
         return name, seed, leech, size
 
-    def add_collapsable_menu(self):
-        self.collapsable_menu = Frame(self.main_frame, height=40, width=500, bg=DEFAULT_BACKGROUND_COLOR)
-        self.collapsable_menu.pack(fill=X)
-
-    def add_progress_bar(self):
-        self.progressbar_frame = Frame(self.main_frame, height=20, width=500, bg=DEFAULT_BACKGROUND_COLOR,
-                                  relief=SUNKEN, cursor="plus")
-        self.progressbar_frame.pack(fill=X)
-
-    def add_functionality_button(self, text):
-        w = Metro_Button(self.collapsable_menu, text=text, background=DEFAULT_BACKGROUND_COLOR,
-                         foreground=DEFAULT_TEXT_COLOR)
-        w.pack(padx=10, pady=5, side=LEFT)
-
-    def add_horizontal_separator(self):
-        f = Frame(self.main_frame, height=1, bg='grey')
-        f.pack(fill=X)
+    @staticmethod
+    def init_addon_metro_button(root_container, text):
+        metro_functionality_button = Metro_Button(root_container, text=text, background=DEFAULT_BACKGROUND_COLOR,
+                                                  foreground=DEFAULT_TEXT_COLOR)
+        metro_functionality_button.pack(padx=10, pady=5, side=LEFT)
 
     def add_entry(self, magnet_data):
         self.magnet_list_box.insert_row([*magnet_data])
 
-    def add_text_block(self, metro_labelframe, text):
-        Label(metro_labelframe.body, text=text).pack(anchor=NW)
+    @staticmethod
+    def init_metro_text_label(root_container, text):
+        for _text in text:
+            metro_text_label = Label(root_container, text=_text)
+            metro_text_label.pack(anchor=NW)
 
-    def add_new_tab(self, notebook, color):
-        frame = Frame(notebook, background=color)
-        frame.pack(fill=BOTH)
+    @staticmethod
+    def init_directors_quote_frame(container_body, directors=''):
+        metro_directors_quote_frame = QuoteFrame(container_body, text=f'Director: {directors}')
+        metro_directors_quote_frame.pack(anchor=NW)
 
-        description_and_poster_frame = Frame(frame, height=300, bg=DEFAULT_BACKGROUND_COLOR,
-                                             relief=SUNKEN, cursor="plus")
-        description_and_poster_frame.pack(fill=X, padx=2, pady=2)
+    @staticmethod
+    def init_actors_quote_frame(container_frame, actors=''):
+        metro_actors_quote_frame = QuoteFrame(container_frame, text=f'Actors: {actors}')
+        metro_actors_quote_frame.pack(anchor=NW)
 
-        metro_labelframe = Metro_LabelFrame(description_and_poster_frame, title="Tiny.Creatures (2020)")
-        metro_labelframe.pack(fill=BOTH, side=LEFT, padx=2, pady=2, expand=True)
-        quote = QuoteFrame(metro_labelframe.body, text="Director: Jhon Doe")
-        quote.pack(anchor=NW)
-        f = Frame(metro_labelframe.body, height=1, bg='grey')
-        f.pack(fill=X)
-        quote = QuoteFrame(metro_labelframe.body, text="Actors: Jhon Doe, Jhonas Doe")
-        quote.pack(anchor=NW)
+    @staticmethod
+    def init_title_label_frame(container_frame, title=''):
+        metro_labelframe_container = Metro_LabelFrame(container_frame, title=title.title())
+        metro_labelframe_container.pack(fill=BOTH, side=LEFT, padx=2, pady=2, expand=True)
+        return metro_labelframe_container
 
-        f = Frame(metro_labelframe.body, height=1, bg='grey')
-        f.pack(fill=X)
+    @staticmethod
+    def add_settings_and_download_buttons(root_container):
+        metro_download_button = Metro_Button(root_container, text=' [  Download  ] ',
+                                             background=DEFAULT_BACKGROUND_COLOR, foreground=DEFAULT_TEXT_COLOR)
+        metro_download_button.pack(side=RIGHT)
 
-        f = Frame(metro_labelframe.body)
-        f.pack(fill=X, pady=4)
-        f = Frame(metro_labelframe.body, height=1, bg='grey')
-        f.pack(fill=X)
+        metro_settings_button = Metro_Button(root_container, text='...',
+                                             background=DEFAULT_BACKGROUND_COLOR, foreground=DEFAULT_TEXT_COLOR)
+        metro_settings_button.pack(side=RIGHT)
 
-        Frame(metro_labelframe.body, background=DEFAULT_BACKGROUND_COLOR, width=6).pack(side=LEFT, fill=Y)
-        self.add_text_block(metro_labelframe, LORE_IPSUM0)
-        self.add_text_block(metro_labelframe, LORE_IPSUM0)
-        self.add_text_block(metro_labelframe, LORE_IPSUM1)
-        self.add_text_block(metro_labelframe, LORE_IPSUM1)
-        self.add_text_block(metro_labelframe, LORE_IPSUM2)
-        self.add_text_block(metro_labelframe, LORE_IPSUM2)
+    def init_new_notebook_tab(self, notebook, color):
+        notebook_frame_container = Frame(notebook, background=color)
+        notebook_frame_container.pack(fill=BOTH)
 
-        data_frame = Frame(description_and_poster_frame, width=200, height=300, bg=DEFAULT_DARK_BACKGROUND_COLOR,
+        description_and_poster_frame_container = Frame(notebook_frame_container, height=300,
+                                                       bg=DEFAULT_BACKGROUND_COLOR, relief=SUNKEN, cursor="plus")
+        description_and_poster_frame_container.pack(fill=X, padx=2, pady=2)
+
+        # note: MetroDescriptionContainer
+        metro_description_container = self.init_title_label_frame(description_and_poster_frame_container, 'Tiny Creatures (2020)')
+
+        # note: MetroDirectorQuoteFrame, MetroActorsQuoteFrame
+        self.init_directors_quote_frame(metro_description_container.body)
+        TkCommonWidgets.horizontal_separator(metro_description_container.body)
+        self.init_actors_quote_frame(metro_description_container.body)
+
+        # note: SeparatorBlock within Multimedia: Film, Show, Anime Description
+        TkCommonWidgets.horizontal_separator(metro_description_container.body)
+        TkCommonWidgets.horizontal_separator(metro_description_container.body, background_color=None, height=0, pady=4)
+        TkCommonWidgets.horizontal_separator(metro_description_container.body)
+        # note: VerticalSeparator: Description Container
+        TkCommonWidgets.vertical_separator(metro_description_container.body)
+        DESCRIPTION_TEXT = [LORE_IPSUM0, LORE_IPSUM0, LORE_IPSUM1, LORE_IPSUM1, LORE_IPSUM2, LORE_IPSUM2]
+        self.init_metro_text_label(metro_description_container.body, DESCRIPTION_TEXT)
+
+        data_frame = Frame(description_and_poster_frame_container, width=200, height=300, bg=DEFAULT_DARK_BACKGROUND_COLOR,
                            relief=SOLID, cursor="plus", padx=2, pady=2)
         data_frame.pack(side=LEFT)
 
         poster = SimplePosterBox(data_frame)
         poster.pack(fill=BOTH, side=LEFT)
 
-        f = Frame(frame, height=1, bg='grey')
-        f.pack(fill=X)
-
-        self.result_frame = Frame(frame, bg=DEFAULT_BACKGROUND_COLOR, relief=SUNKEN, cursor="plus")
-        self.result_frame.pack(fill=X, padx=2, pady=2)
+        TkCommonWidgets.horizontal_separator(metro_description_container.body)
+        self.search_block_result_containter = Frame(notebook_frame_container, bg=DEFAULT_BACKGROUND_COLOR,
+                                                    relief=SUNKEN, cursor="plus")
+        self.search_block_result_containter.pack(fill=X, padx=2, pady=2)
 
         self.magnet_list_box = \
-            Multicolumn_Listbox(self.result_frame, ["Name", "Seeders", "Leechers", "Size"],
+            Multicolumn_Listbox(self.search_block_result_containter, ["Name", "Seeders", "Leechers", "Size"],
                                 command=self.on_select_entry,
                                 cell_anchor="center", cell_background=DEFAULT_BACKGROUND_COLOR,
                                 heading_background=DEFAULT_BACKGROUND_COLOR,
@@ -145,24 +157,17 @@ class SearchResultBlock(object):
         self.magnet_list_box.insert_row(["Tiny.Creatures.S01.1080p.NF.WEBRip.DDP5.1.x264-ExREN[rartv]", 2, 3, 4])
         self.magnet_list_box.insert_row(["Tiny.Creatures.Season.01.1080p", 5, 6, 7])
 
-        data_frame = Frame(self.result_frame, width=460, height=300, bg=DEFAULT_BACKGROUND_COLOR,
+        data_frame = Frame(self.search_block_result_containter, width=460, height=300, bg=DEFAULT_BACKGROUND_COLOR,
                            relief=SUNKEN, cursor="plus")
         data_frame.pack(fill=BOTH, padx=2, pady=2)
 
         simple_data_box = SimpleDataBox(data_frame)
         simple_data_box.pack(fill=BOTH, side=RIGHT, pady=1)
 
-        button_frame = Frame(frame, bg=DEFAULT_BACKGROUND_COLOR)
-        button_frame.pack(fill=X, side=BOTTOM)
+        # note: RightLowerButtonFrameContainer: MetroDownloadButton, MetroSettingsButton
+        right_lower_button_frame_container = Frame(notebook_frame_container, bg=DEFAULT_BACKGROUND_COLOR)
+        right_lower_button_frame_container.pack(fill=X, side=BOTTOM)
+        self.add_settings_and_download_buttons(right_lower_button_frame_container)
+        TkCommonWidgets.horizontal_separator(notebook_frame_container)
 
-        w = Metro_Button(button_frame, text=' [  Download  ] ', background=DEFAULT_BACKGROUND_COLOR,
-                         foreground=DEFAULT_TEXT_COLOR)
-        w.pack(side=RIGHT)
-
-        w = Metro_Button(button_frame, text='...', background=DEFAULT_BACKGROUND_COLOR,
-                         foreground=DEFAULT_TEXT_COLOR)
-        w.pack(side=RIGHT)
-
-        f = Frame(frame, height=1, bg='grey')
-        f.pack(fill=X)
-        notebook.add(frame, text=color)
+        notebook.add(notebook_frame_container, text=color)

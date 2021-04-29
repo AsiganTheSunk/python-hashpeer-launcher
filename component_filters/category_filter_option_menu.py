@@ -10,6 +10,8 @@ from components.metro_ui.recipe_entry_metro_ui import Metro_Button
 from component_filters.tk_utils import TkUtils
 from component_filters.entry_filter_list import EntryFilterList
 from components.metro_ui.recipe_entry_metro_ui import Search_Box
+from component_filters.tk_common_widgets import TkCommonWidgets
+
 
 CATEGORY_FILTER_TAGS = '  [  SEARCH FILTER TAGS  ]  '
 
@@ -20,8 +22,9 @@ class CategoryFilterOptionMenu(Frame):
         Frame.__init__(self, root, relief=FLAT, background=DEFAULT_BACKGROUND_COLOR)
         self.pack(fill=X)
         self.entry_items = None
-        f = Frame(self.root, height=1, bg='grey', relief=FLAT)
-        f.pack(fill=X)
+
+        TkCommonWidgets.horizontal_separator(root)
+
         # note: < Container Frames >
         #  UpperBoxRoot: This box will contain category_root, search_input_root
         #  LowerBoxRoot: This box will contain the filter_output
