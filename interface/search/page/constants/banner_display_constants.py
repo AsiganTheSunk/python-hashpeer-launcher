@@ -1,0 +1,1 @@
+BANNER_LABEL_PLACEHOLDER = './interface/resources/static/image/placeholder/display_placeholder.png'
