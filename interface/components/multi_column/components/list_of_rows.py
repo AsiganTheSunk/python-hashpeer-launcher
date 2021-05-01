@@ -1,4 +1,4 @@
-from interface.components.multi_column_list_container.row import Row
+from interface.components.multi_column.components.row import Row
 
 
 class ListOfRows(object):

@@ -4,11 +4,11 @@
 # print("Author's email: %s"%"61706c69636163696f6e616d656469646140676d61696c2e636f6d".decode("hex"))
 # 580746 Recipe
 
-from tkinter import Frame, BOTH, N, E, S, W, CENTER, Entry, Canvas, Label
+from tkinter import W, CENTER, Frame, X
 from tkinter.font import Font, nametofont
-from tkinter.ttk import Treeview, Scrollbar, Style
-from interface.components.multi_column_list_container.listofrows import ListOfRows
-from interface.components.multi_column_list_container.listofcolumns import ListOfColumns
+from tkinter.ttk import Treeview, Style
+from interface.components.multi_column.components.list_of_rows import ListOfRows
+from interface.components.multi_column.components.list_of_columns import ListOfColumns
 
 
 class MultiColumnListBox(object):
@@ -19,6 +19,9 @@ class MultiColumnListBox(object):
                  stripped_rows=None, selection_background=None, selection_foreground=None, field_background=None,
                  heading_font=None, heading_background=None, heading_foreground=None, cell_pady=2, cell_background=None,
                  cell_foreground=None, cell_font=None, headers=True):
+
+        # Frame.__init__(master, cursor="plus")
+        # self.pack(fill=X, padx=2, pady=1)
 
         self._stripped_rows = stripped_rows
 

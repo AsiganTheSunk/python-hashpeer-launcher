@@ -1,4 +1,4 @@
-from interface.components.multi_column_list_container.recipe_treeview import MultiColumnListBox
+from interface.components.multi_column.multicolumn_list_container import MultiColumnListBox
 from interface.search.page.multimedia_poster_container import MultimediaPosterContainer
 from interface.search.page.multimedia_magnet_information_container import MultimediaMagnetInformationContainer
 from interface.component_filters.tk_common_widgets import TkCommonWidgets
