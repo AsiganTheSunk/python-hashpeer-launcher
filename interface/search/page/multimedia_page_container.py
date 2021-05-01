@@ -1,4 +1,4 @@
-from interface.components.treeview_widget.recipe_treeview import Multicolumn_Listbox
+from interface.components.multi_column_list_container.recipe_treeview import MultiColumnListBox
 from interface.search.page.multimedia_poster_container import MultimediaPosterContainer
 from interface.search.page.multimedia_magnet_information_container import MultimediaMagnetInformationContainer
 from interface.component_filters.tk_common_widgets import TkCommonWidgets
@@ -53,8 +53,6 @@ class MultimediaPageContainer(Frame):
         metro_labelframe_container.pack(fill=BOTH, side=LEFT, padx=2, pady=2, expand=True)
         return metro_labelframe_container
 
-
-
     def init_new_notebook_tab(self, background_color):
         self.configure(bg=background_color)
 
@@ -68,16 +66,16 @@ class MultimediaPageContainer(Frame):
         self.search_block_result_containter.pack(fill=X, padx=2, pady=1)
 
         self.magnet_list_box = \
-            Multicolumn_Listbox(self.search_block_result_containter, ["Name", "Seeders", "Leechers", "Size"],
-                                command=self.on_select_entry,
-                                cell_anchor="center", cell_background=DEFAULT_BACKGROUND_COLOR,
-                                heading_background=DEFAULT_BACKGROUND_COLOR,
-                                heading_font=(DEFAULT_FONT_STYLE, DEFAULT_FONT_SIZE),
-                                cell_font=(DEFAULT_FONT_STYLE, DEFAULT_FONT_SIZE),
-                                selection_background=DEFAULT_SELECTED_UNDER_SCORE_TAB,
-                                cell_foreground=DEFAULT_TEXT_COLOR, selection_foreground='white',
-                                heading_foreground=DEFAULT_TEXT_COLOR,
-                                field_background=DEFAULT_SELECTED_AND_NOT_ACTIVE_UNDER_SCORE_TAB)
+            MultiColumnListBox(self.search_block_result_containter, ["Name", "Seeders", "Leechers", "Size"],
+                               command=self.on_select_entry,
+                               cell_anchor="center", cell_background=DEFAULT_BACKGROUND_COLOR,
+                               heading_background=DEFAULT_BACKGROUND_COLOR,
+                               heading_font=(DEFAULT_FONT_STYLE, DEFAULT_FONT_SIZE),
+                               cell_font=(DEFAULT_FONT_STYLE, DEFAULT_FONT_SIZE),
+                               selection_background=DEFAULT_SELECTED_UNDER_SCORE_TAB,
+                               cell_foreground=DEFAULT_TEXT_COLOR, selection_foreground='white',
+                               heading_foreground=DEFAULT_TEXT_COLOR,
+                               field_background=DEFAULT_SELECTED_AND_NOT_ACTIVE_UNDER_SCORE_TAB)
 
         self.magnet_list_box.interior.pack(fill=BOTH, side=LEFT, pady=3, padx=2, expand=True)
         self.magnet_list_box.insert_row(["Tiny.Creatures.S01.1080p.NF.WEBRip.DDP5.1.x265", 8, 9, 10])
